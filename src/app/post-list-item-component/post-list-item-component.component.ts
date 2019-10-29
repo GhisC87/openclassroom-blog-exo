@@ -1,18 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-post-list-item-component',
   templateUrl: './post-list-item-component.component.html',
   styleUrls: ['./post-list-item-component.component.css']
 })
-export class PostListItemComponentComponent implements OnInit {
-  loveIts = 0;
-  constructor() {
+export class PostListItemComponentComponent {
+
+  @Input() post: Post;
+
+  constructor() {}
+
+  public onLoveButton() {
+    this.changeLoveItsValue(1);
   }
-  @Input() post;
-  ngOnInit() {
+  public onDislikeButton() {
+    this.changeLoveItsValue(-1);
   }
-onLoveButton(valeur) {
-this.loveIts += valeur;
-}
+  private changeLoveItsValue(valeur: number) {
+    this.post.loveIts += valeur;
+  }
 }

@@ -1,10 +1,13 @@
-<li [ngClass]="{'list-group-item': true, 
-                'list-group-item-success': loveIts > 0, 
-                'list-group-item-danger': loveIts < 0, 
-                'list-group-item-default': loveIts === 0}">
-    <H3><b>Titre : {{ post.title }}</b> </H3>
+<li class="list-group-item" 
+    [ngClass]="{'list-group-item-success': post.loveIts > 0, 
+                'list-group-item-danger': post.loveIts < 0, 
+                'list-group-item-default': post.loveIts === 0}">
+    <h3>Titre : {{ post.title }}</h3>
     <p>{{ post.content }}</p>
-<p><button class="btn btn-success" (click)= "onLoveButton(1)" >Trop cool !</button> | <button class="btn btn-danger" (click)= "onLoveButton(-1)" >Tsss c'est nul !</button></p>
-<p>Score : {{ loveIts }}</p>
-<p>Mis en ligne : {{ post.created_at | date: 'short'}}</p>
+    <p>
+        <button class="btn btn-success" (click)="onLoveButton()" >Trop cool !</button>
+        <button class="btn btn-danger" (click)="onDislikeButton()" >Tsss c'est nul !</button>
+    </p>
+    <p>Score : {{ post.loveIts }}</p>
+    <p>Mis en ligne : {{ post.createdAt | date: 'dd/MM/yyyy, HH:mm'}}</p>
 </li>
